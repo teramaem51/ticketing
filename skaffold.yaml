@@ -19,3 +19,14 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
+    # added ---
+    - image: teramaem51/client
+    # - image: asia.gcr.io/ticketing-dev-342607/client
+      context: client
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: '**/*.js'
+            dest: .
+    # --- added
