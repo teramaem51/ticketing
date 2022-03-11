@@ -26,10 +26,6 @@ const useRequest = ({ url, method, body, onSuccess }) => {
           </ul>
         </div>
       );
-
-      throw err;
-        // if err isn't empty, browser won't redirect to root
-        // Router.push('/'); in ../pages/auth/signup
     }
   };
 
