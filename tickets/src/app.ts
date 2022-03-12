@@ -2,7 +2,7 @@ import express from 'express';
 import 'express-async-errors';
 import { json } from 'body-parser';
 import cookieSession from 'cookie-session';
-import { errorHandler, NotFoundError } from '@mt51tickets/common';
+import { errorHandler, NotFoundError, currentUser } from '@mt51tickets/common';
 import { createTicketRouter } from './routes/new';
 
 
@@ -16,6 +16,7 @@ app.use(
       // supertest connect whitout SSL encryption  
   })
 );
+app.use(currentUser);
 
 app.use(createTicketRouter);
 
