@@ -21,6 +21,8 @@ spec:
           imagePullPolicy: Never
           # image: asia.gcr.io/ticketing-dev-342607/tickets
           env:
+            - name: MONGO_URI
+              value: 'mongodb://tickets-mongo-srv:27017/tickets'
             - name: JWT_KEY
               valueFrom:
                 secretKeyRef:
