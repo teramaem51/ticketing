@@ -3,6 +3,7 @@ import 'express-async-errors';
 import { json } from 'body-parser';
 import cookieSession from 'cookie-session';
 import { errorHandler, NotFoundError } from '@mt51tickets/common';
+import { createTicketRouter } from './routes/new';
 
 
 const app = express();
@@ -15,6 +16,8 @@ app.use(
       // supertest connect whitout SSL encryption  
   })
 );
+
+app.use(createTicketRouter);
 
 app.all('*', async (req, res) => {
   throw new NotFoundError();
