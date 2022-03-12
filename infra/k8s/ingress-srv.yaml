@@ -20,7 +20,6 @@ spec:
                 name: auth-srv
                 port:
                   number: 3000
-          # added ---
           - path: /?(.*)
             pathType: Prefix
             backend:
@@ -28,4 +27,3 @@ spec:
                 name: client-srv
                 port:
                   number: 3000
-          # --- added

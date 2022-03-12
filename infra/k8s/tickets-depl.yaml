@@ -1,25 +1,25 @@
-# Before deploying auth-depl, require to run this
+# Before deploying tickets-depl, require to run this
 # kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf
 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: auth-depl
+  name: tickets-depl
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: auth
+      app: tickets
   template:
     metadata:
       labels:
-        app: auth
+        app: tickets
     spec:
       containers:
-        - name: auth
-          image: teramaem51/auth
+        - name: tickets
+          image: teramaem51/tickets
           imagePullPolicy: Never
-          # image: asia.gcr.io/ticketing-dev-342607/auth
+          # image: asia.gcr.io/ticketing-dev-342607/tickets
           env:
             - name: JWT_KEY
               valueFrom:
@@ -30,12 +30,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: auth-srv
+  name: tickets-srv
 spec:
   selector:
-    app: auth
+    app: tickets
   ports:
-    - name: auth
+    - name: tickets
       protocol: TCP
       port: 3000
       targetPort: 3000
