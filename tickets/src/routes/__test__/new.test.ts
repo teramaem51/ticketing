@@ -1,5 +1,6 @@
 import request from 'supertest';
 import { app } from '../../app';
+import { Ticket } from '../../models/ticket';
 
 
 it('has a route handler listening to /api/tickets for post requests', async () => {
@@ -31,8 +32,8 @@ it('returns an error if an invalid title is provided', async () => {
     .post('/api/tickets')
     .set('Cookie', global.signin())
     .send({
-      title: '',
-      price: 10
+      'title': '',
+      'price': 10
     })
     .expect(400);
   
@@ -40,7 +41,7 @@ it('returns an error if an invalid title is provided', async () => {
     .post('/api/tickets')
     .set('Cookie', global.signin())
     .send({
-      price: 10
+      'price': 10
     })
     .expect(400);
 });
@@ -50,8 +51,8 @@ it('returns an error if an invalid price is provided', async () => {
     .post('/api/tickets')
     .set('Cookie', global.signin())
     .send({
-      title: 'lsl;afaklejfa;lk',
-      price: -10
+      'title': 'lsl;afaklejfa;lk',
+      'price': -10
     })
     .expect(400);
   
@@ -59,19 +60,28 @@ it('returns an error if an invalid price is provided', async () => {
     .post('/api/tickets')
     .set('Cookie', global.signin())
     .send({
-      title: 'lsl;afaklejfa;lk',
+      'title': 'lsl;afaklejfa;lk',
     })
     .expect(400);
 });
 
 it('creates a ticket with valid inputs', async () => {
-  // add in a check to make sure a ticket was saved
+  let tickets = await Ticket.find({});
+  expect(tickets.length).toEqual(0);
+
+  const title = 'lsl;afaklejfa;lk'
   
   await request(app)
     .post('/api/tickets')
+    .set('Cookie', global.signin())
     .send({
-      title: 'lsl;afaklejfa;lk',
-      price: 20
+      title,
+      'price': 20
     })
     .expect(201);
+  
+  tickets = await Ticket.find({});
+  expect(tickets.length).toEqual(1);
+  expect(tickets[0].price).toEqual(20);
+  expect(tickets[0].title).toEqual(title);
 });
