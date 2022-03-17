@@ -22,7 +22,7 @@ class NatsWrapper {
       });
       this.client.on('error', (err) => {
         reject(err);
-      })
+      });
     });
   }
 }
