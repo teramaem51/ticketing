@@ -53,7 +53,7 @@ router.post('/api/orders', requireAuth,
     // Publish an event saying that an order was created
 
 
-    res.status(200).send(order);
+    res.status(201).send(order);
   }
 );
 
