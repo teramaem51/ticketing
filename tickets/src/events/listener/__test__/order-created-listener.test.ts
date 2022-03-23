@@ -20,20 +20,20 @@ const setup = async () => {
 
   // Create the fake data event
   const data: OrderCreatedEvent['data'] = {
-    id: new mongoose.Types.ObjectId().toHexString(),
-    version: 0,
-    status: OrderStatus.Created,
-    userId: 'afjdsaj',
-    expiresAt: 'afjdsaj',
-    ticket: {
-        id: ticket.id,
-        price: ticket.price
+    'id': new mongoose.Types.ObjectId().toHexString(),
+    'version': 0,
+    'status': OrderStatus.Created,
+    'userId': 'afjdsaj',
+    'expiresAt': 'afjdsaj',
+    'ticket': {
+        'id': ticket.id,
+        'price': ticket.price
     }
   };
 
   // @ts-ignore
   const msg: Message = {
-    ack: jest.fn()
+    'ack': jest.fn()
   };
 
   return { listener, ticket, data, msg };
