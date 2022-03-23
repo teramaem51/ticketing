@@ -47,7 +47,7 @@ build:
           - src: 'src/**/*.ts'
             dest: .
     - image: teramaem51/expiration
-    # - image: asia.gcr.io/ticketing-dev-342607/orders
+    # - image: asia.gcr.io/ticketing-dev-342607/expiration
       context: expiration
       docker:
         dockerfile: Dockerfile
