@@ -41,7 +41,7 @@ router.post('/api/payments',
     }
 
     await stripe.charges.create({
-      'currency': 'USD',
+      'currency': 'usd',
       'amount': order.price * 100,
       'source': token
     });

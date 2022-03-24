@@ -10,6 +10,9 @@ declare global {
 }
 
 jest.mock('../nats-wrapper');
+jest.setTimeout(50000);
+
+process.env.STRIPE_KEY = 'sk_test_51K ... ZFj';
 
 let mongo: any;
 beforeAll(async () => {
