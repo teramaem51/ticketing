@@ -4,7 +4,7 @@ on:
   pull_request
 
 env:
-  STRIPE_KEY: ${{secrets.STRIPE_KEY_PUB_TEST}}
+  STRIPE_KEY: ${{secrets.STRIPE_KEY_SEC_TEST}}
 
 jobs:
   build:
