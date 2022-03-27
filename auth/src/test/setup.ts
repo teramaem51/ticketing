@@ -8,6 +8,8 @@ declare global {
   var signin: () => Promise<string[]>;
 }
 
+jest.setTimeout(50000);
+
 let mongo: any;
 beforeAll(async () => {
   process.env.JWT_KEY = 'asdfasdf';
