@@ -18,7 +18,7 @@ spec:
       containers:
         - name: tickets
           image: teramaem51/tickets
-          imagePullPolicy: Never
+          # imagePullPolicy: Never
           # image: asia.gcr.io/ticketing-dev-342607/tickets
           env:
             - name: NATS_CLIENT_ID

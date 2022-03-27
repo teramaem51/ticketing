@@ -18,7 +18,7 @@ spec:
       containers:
         - name: payments
           image: teramaem51/payments
-          imagePullPolicy: Never
+          # imagePullPolicy: Never
           # image: asia.gcr.io/ticketing-dev-342607/payments
           env:
             - name: NATS_CLIENT_ID
